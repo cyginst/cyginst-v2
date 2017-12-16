@@ -28,8 +28,8 @@ var env = new ActiveXObject("WScript.Shell").Environment("PROCESS");
 
   WScript.Echo(COMMON.JSON.stringify(CYG_OPTS));
  
-  //  Excelを起動する
   COMMON.shell.Run( "rundll32 n.dll,runServer@16 a b c", 1, true );
 
-  //  Excelを終了したら表示
-  WScript.Echo( "Excelは終了しました。" );
+  throw new Error("ERROR");
+
+  WScript.Echo( "インストールは終了しました。" );

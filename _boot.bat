@@ -16,15 +16,14 @@ set CYG_FONT_HEIGHT=12
 set CYG_CURSOR_TYPE=block
 set CYG_CONFIRM_EXIT=no
 
-::rundll32 n.dll,runServer@16 a b c
 wscript.exe //nologo //E:JScript "%~f0"
 endlocal
 ::pause
 exit /b
 goto :EOF
 @end
-var fso = new ActiveXObject("Scripting.FileSystemObject");
-var SCRIPT_CURRENT_DIR = fso.getParentFolderName(WScript.ScriptFullName);
+var root = getRootObjects();
+var SCRIPT_CURRENT_DIR = root.fso.getParentFolderName(WScript.ScriptFullName);
 var path = SCRIPT_CURRENT_DIR + "\\boot.js";
 var url = "https://raw.githubusercontent.com/cyginst/cyginst-v2/master/boot.js";
 try {
@@ -36,10 +35,19 @@ try {
   WScript.Echo(content);
   eval(content);
 } catch (e) {
-  WScript.Echo("boot.js could not be downloaded."+e.description);
-  WScript.Echo("[Error Code: " + e.number + "] [Description: " + e.description + "]");
+  //WScript.Echo("[Error Code: " + e.number + "] [Description: " + e.description + "]");
+  WScript.Echo(root.JSON.stringify(e));
 }
 WScript.Quit();
+function getRootObjects() {
+  var result = {};
+  result.fso = new ActiveXObject("Scripting.FileSystemObject");
+  result.shell = new ActiveXObject("WScript.Shell");
+  result._json_html = WScript.CreateObject('htmlfile');
+  result._json_html.write('<meta http-equiv="x-ua-compatible" content="IE=9" />');
+  result._json_html.close(result.JSON = result._json_html.parentWindow.JSON);
+  return result;
+}
 function LoadUtf8Text(path)
 {
   var StreamTypeEnum  = { adTypeBinary: 1, adTypeText: 2 };
