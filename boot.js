@@ -1,1 +1,1 @@
-WScript.Echo("boot.js is loaded!");
+WScript.Echo("boot.js is loaded!漢字");
