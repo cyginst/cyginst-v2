@@ -49,17 +49,6 @@ extern "C" __declspec(dllexport) void CALLBACK runServer(HWND hwnd, HINSTANCE hi
         printf("SCRIPT_CURRENT_DIR=%s\n", getenv("SCRIPT_CURRENT_DIR"));
         
     }
-    #if 0x0
-    HMODULE hmod = LoadLibraryA("root.dll");
-    printf("hmod=0x%08x\n", hmod);
-    system("pause");
-    typedef void (*proto_run_chicken)();
-    proto_run_chicken addr_run_chicken = (proto_run_chicken)GetProcAddress(hmod, "run_chicken");
-    printf("addr_run_chicken=0x%08x\n", addr_run_chicken);
-    system("pause");
-    addr_run_chicken();
-    #endif
-
     int status;
     lua_State *L;
     

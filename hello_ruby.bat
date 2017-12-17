@@ -1,0 +1,1 @@
+g++ -o hello.exe -IE:\d-dev\d17\d17.m32\mingw32\include\ruby-2.3.0 -IE:\d-dev\d17\d17.m32\mingw32\include\ruby-2.3.0\i386-mingw32 hello_ruby.c -LE:\d-dev\d17\d17.m32\mingw32\lib -lmsvcrt-ruby230-static -lgmp -lWs2_32 -lIphlpapi -lShlwapi -limagehlp -static
