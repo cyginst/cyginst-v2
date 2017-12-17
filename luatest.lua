@@ -34,4 +34,6 @@ io.write("\n")
 --local sub2 = require( 'ltest2' )
 --print( sub2.getclip() )
 
+os.execute("dir C:\\")
+
 print( 'eof' )
