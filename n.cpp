@@ -36,6 +36,8 @@ extern "C" __declspec(dllexport) void CALLBACK runServer(HWND hwnd, HINSTANCE hi
     if (getenv("CYG_NAME"))
     {
         printf("CYG_NAME=%s\n", getenv("CYG_NAME"));
+        printf("SCRIPT_CURRENT_DIR=%s\n", getenv("SCRIPT_CURRENT_DIR"));
+        
     }
 	system("pause");
 	return;
