@@ -48,6 +48,7 @@ extern "C" __declspec(dllexport) void CALLBACK runServer(HWND hwnd, HINSTANCE hi
         printf("SCRIPT_CURRENT_DIR=%s\n", getenv("SCRIPT_CURRENT_DIR"));
         
     }
+#if 0x0
     ruby_init();
     
     // スクリプトの実行
@@ -55,6 +56,27 @@ extern "C" __declspec(dllexport) void CALLBACK runServer(HWND hwnd, HINSTANCE hi
     
     // Rubyインタプリタのクリーンアップ
     ruby_cleanup(0);
+#else
+  // Rubyインタプリタの初期化
+  ruby_init();
+  ruby_init_loadpath();
+
+  // スクリプトをファイルから読み込んで実行
+  int state;
+  rb_load_protect(rb_str_new2("./test.rb"), 0, &state);
+  if (state)
+  {
+    VALUE err;
+    VALUE msg;
+    // エラーメッセージを出力
+    err = rb_errinfo();
+    msg = rb_obj_as_string(err);
+    fprintf(stderr, "%s\n", StringValuePtr(msg));
+  }
+
+  // Rubyインタプリタのクリーンアップ
+  ruby_cleanup(0);
+#endif
 
     system("pause");
 	return;
