@@ -3,3 +3,6 @@
 *.so
 *.o
 *.a
+*.bin
+*.dll.def
+*.dll.json

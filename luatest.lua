@@ -36,4 +36,15 @@ io.write("\n")
 
 os.execute("dir C:\\")
 
+local ffi2 = require("ffi")
+ffi2.cdef[[
+int add2(int, int);
+]]
+local zero = ffi2.load("zero.dll")
+--local zero = ffi2.load("zero.dll")
+--local kernel32 = ffi.load("kernel32");
+print( zero )
+local answer = zero.add2(11, 22)
+print( answer )
+
 print( 'eof' )
