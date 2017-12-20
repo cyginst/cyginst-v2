@@ -49,4 +49,4 @@ print( answer )
 
 print( 'eof' )
 
-print( 'eof2' )
+--  { "abc": 123  }
