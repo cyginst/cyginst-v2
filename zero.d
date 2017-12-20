@@ -48,7 +48,7 @@ static void pause()
     import std.process : executeShell;
     import std.stdio : stdin, stdout, write, writeln;
 
-    write(`[PAUSE] HIT ENTER KEY: `);
+    write(`Press any key to continue . . .`);
     stdout.flush();
     stdin.readln();
 }

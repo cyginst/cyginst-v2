@@ -48,3 +48,5 @@ local answer = zero.add2(11, 22)
 print( answer )
 
 print( 'eof' )
+
+print( 'eof2' )
